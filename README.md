@@ -7,5 +7,5 @@
 |   | No. Alumno | Apellidos | Nombre | Usuario Github | % participación |
 | --- | --- | --- | --- | --- | --- |
 |  1 | 201810223 | Quispe Barriga | Sebastian Andres | anquisbarr |  |
-|  2 |  |  |  |  |  |
+|  2 | 201810118 | Bernuy Geiser | Mauricio Bernardo | Mauricio-Bernuy |  |
 |  3 |  |  |  |  |  |
