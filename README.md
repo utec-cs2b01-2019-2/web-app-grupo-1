@@ -1,4 +1,4 @@
-# Nombre del grupo
+# GRUPO 1
 
 ## Breve descrición del proyecto
 
