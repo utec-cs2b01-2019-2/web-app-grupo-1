@@ -16,22 +16,35 @@ def home():
         year=datetime.now().year,
     )
 
+
+@app.route('/about')
+def about():
+    return render_template(
+        'about.html',
+        title= 'About',
+        year=datetime.now().year,
+        message='About App'
+        )
+
+
+
+
 @app.route('/login')
-def login():
+def login():                     
     """Renders login """
     return render_template(
         'login.html',
         title='Login',
         year=datetime.now().year,
-        message='Your contact page.'
+        message='Login to your existing account'
     )
 
 @app.route('/signup')
-def about():
+def signup():
     """Renders signup"""
     return render_template(
         'signup.html',
         title='Sign Up',
         year=datetime.now().year,
-        message='Your application description page.'
+        message='Create a new account'
     )
