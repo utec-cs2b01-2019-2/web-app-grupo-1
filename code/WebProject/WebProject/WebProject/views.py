@@ -2,9 +2,17 @@
 Routes and views for the flask application.
 """
 
+from flask import Flask, render_template, request, session, Response, redirect
 from datetime import datetime
-from flask import render_template
 from WebProject import app
+from flask_sqlalchemy import flask_sqlalchemy
+
+from WebProject.database import connector
+from WebProject.model import entities
+
+import json
+import time
+
 
 @app.route('/')
 @app.route('/home')

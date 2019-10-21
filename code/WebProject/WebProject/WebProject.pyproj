@@ -29,11 +29,19 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="runserver.py" />
+    <Compile Include="WebProject\database\connector.py" />
+    <Compile Include="WebProject\database\__init__.py" />
+    <Compile Include="WebProject\model\entities.py" />
+    <Compile Include="WebProject\model\__init__.py" />
     <Compile Include="WebProject\__init__.py" />
     <Compile Include="WebProject\views.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="WebProject\" />
+    <Folder Include="WebProject\database\" />
+    <Folder Include="WebProject\database\__pycache__\" />
+    <Folder Include="WebProject\model\" />
+    <Folder Include="WebProject\model\__pycache__\" />
     <Folder Include="WebProject\static\" />
     <Folder Include="WebProject\static\content\" />
     <Folder Include="WebProject\static\fonts\" />
@@ -42,6 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="requirements.txt" />
+    <Content Include="WebProject\database\__pycache__\connector.cpython-37.pyc" />
+    <Content Include="WebProject\database\__pycache__\__init__.cpython-37.pyc" />
+    <Content Include="WebProject\model\__pycache__\entities.cpython-36.pyc" />
+    <Content Include="WebProject\model\__pycache__\entities.cpython-37.pyc" />
+    <Content Include="WebProject\model\__pycache__\__init__.cpython-36.pyc" />
+    <Content Include="WebProject\model\__pycache__\__init__.cpython-37.pyc" />
     <Content Include="WebProject\static\content\bootstrap.css" />
     <Content Include="WebProject\static\content\bootstrap.min.css" />
     <Content Include="WebProject\static\content\site.css" />
