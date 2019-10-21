@@ -5,7 +5,7 @@ Routes and views for the flask application.
 from flask import Flask, render_template, request, session, Response, redirect
 from datetime import datetime
 from WebProject import app
-from flask_sqlalchemy import flask_sqlalchemy
+
 
 from WebProject.database import connector
 from WebProject.model import entities
