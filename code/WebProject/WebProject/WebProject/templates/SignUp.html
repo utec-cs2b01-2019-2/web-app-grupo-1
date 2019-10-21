@@ -1,19 +1,39 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="jumbotron">
-    <h2>{{ title }}</h2>
-    <h3>{{ message }}</h3>
+    <div class="jumbotron">
+        <h2>{{ title }}</h2>
+        <h3>{{ message }}</h3>
 
-    <form>
-        <div class="form-group">
-            <label for="InputEmail">Email address</label>
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <small for="inputName">Name</small>
+                    <input type="text" class="form-control" id="inputName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <small for="inputLastName">Lastname</small>
+                    <input type="text" class="form-control" id="Lastname" placeholder="Last name">
+                </div>
 
-        </div>
+                <div class="form-group">
+                    <small for="inputEmail">Email</small>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Email">
+                </div>
+                <div class="form-group">
+                    <small for="inputPassword">Password</small>
+                    <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                </div>
+                <div class="form-group">
+                    <small for="confirmPassword">Confirm Password</small>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Password">
+                </div>
+            </div>
 
-    </form>
+        
+            <button type="submit" class="btn btn-success">Sign in</button>
+        </form>
 
-    <p>ToDo: Create SignUp</p>
-</div>
+    </div>
 
 {% endblock %}
