@@ -10,23 +10,22 @@
     <h3>{{ message }}</h3>
 
 
-    <form class="form-inline" role="form">
-        <div class="form-row">
-            <div class="col">
-                <label for="InputEmail">Email Address</label>
-                <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
-            </div>
-            <div class="col">
-                <label for="InputPassword">Password</label>
-                <input type="password" class="form-control" id="InputPassword" placeholder="Password">
-            </div>
-        </div>
+    <form role="form">
         <div class="form-group">
-            <div class="form-check">
-                <input type="checkbox" class="form-check-input" id="RememberCheck">
-                <label class="form-check-label" for="RememberCheck">Remember me</label>
-            </div>
-            </div>
+            <small for="InputEmail">Email Address</small>
+            <input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Enter Email">
+
+        <div class="form-group">
+            <small for="InputPassword">Password</small>
+            <input type="password" class="form-control" id="InputPassword" placeholder="Password">
+
+        </div>
+        <div class="form-check">
+            <small class="form-check-label" for="RememberCheck">Remember me</small>
+            <input type="checkbox" class="form-check-input" id="RememberCheck">
+            
+        </div>
+        </div>
         <button type="submit" class="btn btn-success btn-lg">Login</button>
     </form>
 
