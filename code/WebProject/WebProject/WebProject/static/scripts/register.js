@@ -1,16 +1,16 @@
 function Register(){
         $('#action').append('<div class="text-center">Comprobando. . .</div>');
-        var email = $('#email').val();
-        var password = $('#password').val();
-        var confirmedpassword = $('#confirmedpassword').val();
-        var name = $('#name').val();
-        var lastname = $('#lastname').val();
+        var email = $('#Email').val();
+        var password = $('#Password').val();
+        var confirmedpassword = $('#confirmPassword').val();
+        var name = $('#Name').val();
+        var lastname = $('#Lastname').val();
         var message = JSON.stringify({
-                "email": email,
-                "password": password,
-                "name":name,
-                "lastname":lastname,
-                "confirmedpassword":confirmedpassword
+                "Email": Email,
+                "Password": Password,
+                "Name":Name,
+                "Lastname":Lastname,
+                "confirmPassword":confirmPassword
             });
         $.ajax({
             url:'/registering',
@@ -24,7 +24,7 @@ function Register(){
                     $('#action').append('<div class="text-center">Datos ingresados incorrectamente</div>');}
                 else{
                 $('#action').append('<div class="text-center">Datos ingresados correctamente, pasa a loguearte en tu nueva cuenta</div>')
-                var url = 'http://' + document.domain + ':' + location.port + '/static/login.html';
+                var url = 'http://' + document.domain + ':' + location.port + '/login';
                  $(location).attr('href',url);
                 }
 
