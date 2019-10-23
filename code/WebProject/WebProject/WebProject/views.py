@@ -13,6 +13,12 @@ from WebProject.model import entities
 import json
 import time
 
+db = connector.Manager()
+engine = db.createEngine()
+
+"""
+Pages
+"""
 
 @app.route('/')
 @app.route('/home')
@@ -56,3 +62,28 @@ def signup():
         year=datetime.now().year,
         message='Create a new account'
     )
+
+"""
+Operations
+"""
+
+@app.route('/user', methods = ['POST'])
+def create_user():
+    c =  json.loads(request.data)
+    user = entities.User(
+        email=c['email'],
+        password=c['password'],
+        name=c['name'],
+        lastname=c['lastname']
+    )
+    session = db.getSession(engine)
+    session.add(user)
+    session.commit()
+    return 'Created User'
+
+@app.route('/user', methods = ['GET'])
+def get_users():
+    session = db.getSession(engine)
+    dbResponse = session.query(entities.User)
+    data = dbResponse[:]
+    return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
