@@ -1,5 +1,6 @@
 $(function(){
-    var url = "http://localhost:5555/chips";
+    var url = 'http://' + document.domain + ':' + location.port + '/crud/chips';
+
 
 
     $("#grid").dxDataGrid({

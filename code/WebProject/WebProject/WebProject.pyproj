@@ -83,6 +83,7 @@
     <Content Include="WebProject\static\scripts\respond.min.js" />
     <Content Include="WebProject\static\scripts\_references.js" />
     <Content Include="WebProject\templates\home.html" />
+    <Content Include="WebProject\templates\login_final.html" />
     <Content Include="WebProject\templates\signup.html" />
     <Content Include="WebProject\templates\login.html" />
     <Content Include="WebProject\templates\index.html" />

@@ -31,6 +31,7 @@ def home():
             name=session['logged_name'],
             title='Home Page',
             year=datetime.now().year,
+
         )
     else:
         return render_template(
@@ -61,12 +62,12 @@ def about():
 def login():                     
     """Renders login """
     return render_template(
-        'login.html',
+        'login_final.html',
         title='Login',
         year=datetime.now().year,
         message='Login to your existing account'
-    )
-
+    )   
+ 
 @app.route('/signup')
 def signup():
     """Renders signup"""
@@ -116,12 +117,19 @@ def authenticate():
     message = json.loads(request.data)
     email = message['email']
     password = message['password']
+    remembercheck = message['remembercheck']
 
     db_session = db.getSession(engine)
     user = db_session.query(entities.User).filter_by(email=email
             #).filter(entities.User.password==password
             ).one()
-    if user and (user.password==password):        
+    if user and (user.password==password):
+
+        if (remembercheck == 1):
+            session.permanent = True;
+        else:
+            session.permanent = False;
+
         session['logged_user'] = user.id
         session['logged_name'] = user.fullname
         message = {'message':'Authorized'}
