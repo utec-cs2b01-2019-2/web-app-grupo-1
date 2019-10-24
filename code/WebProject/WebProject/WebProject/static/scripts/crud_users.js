@@ -1,5 +1,5 @@
 $(function(){
-    var url = "http://localhost:5555/users";
+    var url = "http://localhost:5555/crud/users";
 
 
     $("#grid").dxDataGrid({

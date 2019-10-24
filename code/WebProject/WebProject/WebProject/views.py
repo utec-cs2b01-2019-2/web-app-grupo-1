@@ -15,6 +15,7 @@ import time
 
 db = connector.Manager()
 engine = db.createEngine()
+app.secret_key = ".."
 
 
 #Pages
@@ -23,11 +24,21 @@ engine = db.createEngine()
 @app.route('/home')
 def home():
     """Renders the home page."""
-    return render_template(
-        'index.html',
-        title='Home Page',
-        year=datetime.now().year,
-    )
+    if 'logged_user' in session:
+        return render_template(
+            'home.html',
+            name=session['logged_user'],
+            title='Home Page',
+            year=datetime.now().year,
+        )
+    else:
+        return render_template(
+            'index.html',
+            title='Home Page',
+            year=datetime.now().year,
+        )
+
+
 @app.route('/static/<content>')
 def html(content):
     return render_template(content)
@@ -73,15 +84,52 @@ def signup():
 def create_user():
     #c =  json.loads(request.form['values'])
     c =  json.loads(request.data)
-    users = entities.User(fullname=c['fullname'], email=c['email'], password=c['password'])
-    session = db.getSession(engine)
-    session.add(users)
-    session.commit()
+    user = entities.User(fullname=c['fullname'], email=c['email'], password=c['password'])
+    db_session = db.getSession(engine)
+    db_session.add(user)
+    db_session.commit()
     return 'Created User'
 
 @app.route('/users', methods = ['GET'])
 def get_users():
-    session = db.getSession(engine)
-    dbResponse = session.query(entities.User)
+    db_session = db.getSession(engine)
+    dbResponse = db_session.query(entities.User)
     data = dbResponse[:]
     return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+@app.route('/users/<id>', methods = ['GET'])
+def get_user(id):
+    db_session = db.getSession(engine)
+    users = db_session.query(entities.User).filter(entities.User.id == id)
+    for user in users:
+        js = json.dumps(user, cls=connector.AlchemyEncoder)
+        return  Response(js, status=200, mimetype='application/json')
+
+    message = { 'status': 404, 'message': 'Not Found'}
+    return Response(message, status=404, mimetype='application/json')
+
+
+
+@app.route('/authenticate', methods = ['POST'])
+def authenticate():
+    message = json.loads(request.data)
+    email = message['email']
+    password = message['password']
+
+    db_session = db.getSession(engine)
+    user = db_session.query(entities.User).filter_by(email=email
+            #).filter(entities.User.password==password
+            ).one()
+    if user and (user.password==password):        
+        session['logged_user'] = user.id
+        message = {'message':'Authorized'}
+        return Response(json.dumps(message,cls=connector.AlchemyEncoder), status=200,mimetype='application/json')
+    else:
+        message = {'message':'Unauthorized'}
+        return Response(json.dumps(message,cls=connector.AlchemyEncoder), status=401,mimetype='application/json')
+
+@app.route('/current', methods = ['GET'])
+def current_user():
+    db_session = db.getSession(engine)
+    user = db_session.query(entities.User).filter(entities.User.id == session['logged_user']).first()
+    return Response(json.dumps(user,cls=connector.AlchemyEncoder),mimetype='application/json')
