@@ -24,10 +24,11 @@ app.secret_key = ".."
 @app.route('/home')
 def home():
     """Renders the home page."""
-    if 'logged_user' in session:
+    if 'logged_name' in session:
+
         return render_template(
             'home.html',
-            name=session['logged_user'],
+            name=session['logged_name'],
             title='Home Page',
             year=datetime.now().year,
         )
@@ -122,6 +123,7 @@ def authenticate():
             ).one()
     if user and (user.password==password):        
         session['logged_user'] = user.id
+        session['logged_name'] = user.fullname
         message = {'message':'Authorized'}
         return Response(json.dumps(message,cls=connector.AlchemyEncoder), status=200,mimetype='application/json')
     else:
