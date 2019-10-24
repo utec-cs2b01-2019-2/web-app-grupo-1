@@ -86,6 +86,7 @@
     <Content Include="WebProject\templates\index.html" />
     <Content Include="WebProject\templates\layout.html" />
     <Content Include="WebProject\templates\about.html" />
+    <Content Include="WebProject\templates\users_table.html" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">

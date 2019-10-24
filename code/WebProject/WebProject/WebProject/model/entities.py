@@ -6,10 +6,10 @@ from WebProject.database import connector
 class User(connector.Manager.Base):
     __tablename__ = 'users'
     id = Column(Integer, Sequence('user_id_seq'), primary_key=True)
-    name = Column(String(50))
-    lastname = Column(String(50))
-    password = Column(String(12))
-    email = Column(String(40))
+    fullname = Column(String(80))
+    email = Column(String(80))
+    password = Column(String(80))
+    
 
 class Chip(connector.Manager.Base):
     __tablename__ = 'Chips'

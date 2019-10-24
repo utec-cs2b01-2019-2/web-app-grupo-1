@@ -2,27 +2,27 @@ function Register() {
 
         $('#action').append('<div class="text-center">Comprobando. . .</div>');
         console.log("Comprobando. . .");
-        var email = $('#Email').val();
-        var password = $('#Password').val();
-        var confirmpassword = $('#confirmPassword').val();
-        var name = $('#Name').val();
-        var lastname = $('#Lastname').val();
+        var email = $('#email').val();
+        var password = $('#password').val();
+        var confirmpassword = $('#confirmpassword').val();
+        var fullname = $('#fullname').val();
+  
 
     if (password === confirmpassword && password != 0 && confirmpassword !== 0) {
 
         var message = JSON.stringify({
-            "Email": email,
-            "Password": password,
-            "Name": name,
-            "Lastname": lastname,
-            
+            "fullname": fullname,
+            "email": email,
+            "password": password
+                       
         });
         $.ajax({
-            url: '/user',
-            type: 'POST',
+            url: '/users',
+            type: 'post',
+            dataType: 'json',
             contentType: 'application/json',
             data: message,
-            dataType: 'json',
+            
             success: function (response) {
                 $('#action').html("");
                 if (response['status'] == 401) {

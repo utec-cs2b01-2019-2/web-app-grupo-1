@@ -16,9 +16,8 @@ import time
 db = connector.Manager()
 engine = db.createEngine()
 
-"""
-Pages
-"""
+
+#Pages
 
 @app.route('/')
 @app.route('/home')
@@ -29,6 +28,9 @@ def home():
         title='Home Page',
         year=datetime.now().year,
     )
+@app.route('/static/<content>')
+def html(content):
+    return render_template(content)
 
 
 @app.route('/about')
@@ -63,25 +65,21 @@ def signup():
         message='Create a new account'
     )
 
-"""
-Operations
-"""
 
-@app.route('/user', methods = ['POST'])
+#Operations
+
+
+@app.route('/users', methods = ['POST'])
 def create_user():
+    #c =  json.loads(request.form['values'])
     c =  json.loads(request.data)
-    user = entities.User(
-        email=c['email'],
-        password=c['password'],
-        name=c['name'],
-        lastname=c['lastname']
-    )
+    users = entities.User(fullname=c['fullname'], email=c['email'], password=c['password'])
     session = db.getSession(engine)
-    session.add(user)
+    session.add(users)
     session.commit()
     return 'Created User'
 
-@app.route('/user', methods = ['GET'])
+@app.route('/users', methods = ['GET'])
 def get_users():
     session = db.getSession(engine)
     dbResponse = session.query(entities.User)
