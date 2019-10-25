@@ -4,7 +4,7 @@ Routes and views for the flask application.
 
 from flask import Flask, render_template, request, session, Response, redirect
 from datetime import datetime
-from gunicorn import deploy
+
 from WebProject import app
 
 
@@ -51,7 +51,7 @@ def html(content):
 @app.route('/about')
 def about():
     return render_template(
-        'about.html',
+        'about_final.html',
         title= 'About',
         year=datetime.now().year,
         message='About App'
