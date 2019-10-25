@@ -9,7 +9,7 @@ function Login() {
         var credentials = JSON.stringify({ "email": email, "password": password, "remembercheck": remembercheck});
         console.log(credentials);
         $.ajax({
-            url: '/authenticate',
+            url: '/auth',
             type: 'post',
             dataType: 'json',
             contentType: 'application/json',
