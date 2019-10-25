@@ -59,15 +59,15 @@ def about():
 
 
 @app.route('/login')
-def login():                     
+def login():
     """Renders login """
     return render_template(
         'login_final.html',
         title='Login',
         year=datetime.now().year,
         message='Login to your existing account'
-    )   
- 
+    )
+
 @app.route('/signup')
 def signup():
     """Renders signup"""
@@ -148,4 +148,75 @@ def current_user():
 @app.route('/logout', methods = ['GET'])
 def logout():
     session.clear()
-    return render_template('index.html')    
+    return render_template('index.html')
+
+#API Chips
+
+@app.route('/chips', methods = ['POST'])
+def create_chip():
+    data = json.loads(request.data)
+    code_from_user = data['code_from_user']
+    code = data['code']
+
+    chip = entities.Chips(
+        code_from_user = code_from_user,
+        code = code
+    )
+
+    db_session = db.getSession(engine)
+    db_session.add(code)
+    db_session.commit()
+
+    response = {'chip','created'}
+    return Response(json.dumps(response, cls=connector.AlchemyEncoder),status=200,mimetype='application/json')
+
+@app.route('/chips/<id>',methods = ['GET'])
+def get_chip(id):
+    db_session = db.getSession(engine)
+    chips = db_session(entities.Chips).filter(entities.Chips.id == id)
+    for chip in chips:
+        js = json.dumps(chip, cls=connector.AlchemyEncoder)
+        return Response(js,status=200,mimetype='application/json')
+    chip = {'status':404, 'chip': 'not found'}
+    return Response(chip, status = 404, mimetype='application/json')
+
+
+@app.route('/chips', methods = ['GET'])
+def get_chips():
+    sessionc = db.getSession(engine)
+    dbResponse = sessionc.query(entities.Chips)
+    data = dbResponse[:]
+    return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+@app.route('/messages/<code_from_user>', methods = ['GET'])
+def get_chip_user(code_from_user):
+    db_session = db.getSession(engine)
+    chip_from = db_session.query(entities.Message).filter(
+        entities.Message.user_from_id == code_from_user)
+
+    data = []
+    for chip in chip_from:
+        data.append(chip)
+
+    return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
+
+@app.route('/chips', methods = ['PUT'])
+def update_chip():
+    session = db.getSession(engine)
+    id = request.form['key']
+    chip = session.query(entities.Chips).filter(entities.Chips.id == id).first()
+    c = json.loads(request.form['values'])
+    for key in c.keys():
+        setattr(chip, key, c[key])
+    session.add(chip)
+    session.commit()
+    return 'Updated Chip'
+
+@app.route('/chips', methods = ['DELETE'])
+def delete_chip():
+    id = request.form['key']
+    session = db.getSession(engine)
+    chip = session.query(entities.Chips).filter(entities.Chips.id == id).one()
+    session.delete(chip)
+    session.commit()
+    return "Deleted Chip"
