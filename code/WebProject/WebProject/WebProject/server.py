@@ -122,8 +122,8 @@ def get_user(id):
     return Response(message, status=404, mimetype='application/json')
 
 
-@app.route('/authenticate', methods = ['POST'])
-def authenticate():
+@app.route('/auth', methods = ['POST'])
+def auth():
     message = json.loads(request.data)
     email = message['email']
     password = message['password']
