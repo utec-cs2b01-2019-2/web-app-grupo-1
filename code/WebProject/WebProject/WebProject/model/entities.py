@@ -16,5 +16,4 @@ class Chips(connector.Manager.Base):
     id = Column(Integer,Sequence('chip_id_seq'), primary_key=True)
     code = Column(String(12))
     code_from_user = Column(String,ForeignKey('users.id'))
-    code_from = relationship(User, foreign_keys=[code_from_user])
 
