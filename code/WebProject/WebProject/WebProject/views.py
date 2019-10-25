@@ -88,7 +88,7 @@ def signup():
 def create_user():
     #c =  json.loads(request.form['values'])
     c =  json.loads(request.data)
-    user = entities.User(fullname=c['fullname'], email=c['email'], password=c['password'])
+    user = entities.User(fullname=c['fullname'], email=c['email'], password=c['password'], balance='0')
     db_session = db.getSession(engine)
     db_session.add(user)
     db_session.commit()

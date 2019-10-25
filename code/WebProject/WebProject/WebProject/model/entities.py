@@ -9,6 +9,7 @@ class User(connector.Manager.Base):
     fullname = Column(String(80))
     email = Column(String(80))
     password = Column(String(80))
+    balance = Column(String(12))
     
 
 class Chips(connector.Manager.Base):
