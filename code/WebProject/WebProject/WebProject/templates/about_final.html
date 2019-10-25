@@ -1,99 +1,164 @@
-﻿{% extends "layout.html" %}
-{% block content %}
-    
-    <div class="jumbotron">
-        <hr>
-        <!-- ##### Header Area Start ##### -->
-        <header class="header-area">
+<!DOCTYPE html>
+<html lang="en">
 
-            <!-- Logo Area -->
-            <div class="logo-area">
-                <a href="/home"><img src="/static/imgs/HomeLogo" alt=""></a>
-            </div>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
-        </header>
-        <!-- ##### Header Area End ##### -->
-        <!-- ##### Catagory Post Area Start ##### -->
 
-        <div class="catagory-post-area section-padding-100">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <!-- Post Area -->
-                    <div class="col-12 col-lg-8 col-xl-9">
+    <!-- Title -->
+    <title>Pass & Go!</title>
 
-                        <!-- Quienes Somos -->
-                        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
-                            <!-- Blog Thumbnail -->
-                            <div class="blog-thumbnail">
-                                <img src="" alt="">
-                            </div>
-                            <!-- Blog Content -->
-                            <div class="blog-content">
-                                <a href="#" class="post-title">¿Quienes somos?</a>
-                                <div class="post-meta">
-                                    <a href="#" class="post-date">UTEC</a>
-                                    <a href="#" class="post-author">Proyecto Interdisciplinario 1</a>
-                                </div>
-                                <p>
-                                    Somos un start-up que busca mejorar la experiencia del usuario, con la idea de eliminar la interacción con el cobrador con el fin de evitar conflictos y brindar una mayor comodidad.
-                                    ¡Baja para saber más acerca de este proyecto!
-                                </p>
-                            </div>
+    <!-- Favicon -->
+    <link rel="icon" href="/static/imgs/logo_index.jpg">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/static/content/style3.css">
+    <script src="login.js"></script>
+
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-white bg-white fixed-top">
+      <a class="navbar-brand" href="/home"><img src="/static/images/logo_index.png" width="30" height="30">Pass & Go!</a>
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">
+              <span class="sr-only"></span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+
+        <div class="nav-item">
+            <a class="nav-link" href="/home"> Home </a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" href="/"> Account </a>
+        </div>
+        <div class="nav-item">
+            <a class="nav-link" onclick="logout()">Log Out</a>
+        </div>
+  </nav>
+    <hr>
+    <!-- ##### Header Area Start ##### -->
+    <header class="header-area">
+
+        <!-- Logo Area -->
+        <div class="logo-area">
+            <a href="/home"><img src="/static/imgs/HomeLogo" alt=""></a>
+        </div>
+
+    </header>
+    <!-- ##### Header Area End ##### -->
+
+
+    <!-- ##### Catagory Post Area Start ##### -->
+    <div class="catagory-post-area section-padding-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <!-- Post Area -->
+                <div class="col-12 col-lg-8 col-xl-9">
+
+                    <!-- Quienes Somos -->
+                    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                        <!-- Blog Thumbnail -->
+                        <div class="blog-thumbnail">
+                            <img src="" alt="">
                         </div>
-
-                        <!-- Cómo funciona -->
-                        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
-                            <!-- Blog Thumbnail -->
-                            <div class="blog-thumbnail">
-                                <img src="/static/imgs/use" alt="">
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+                            <a href="#" class="post-title">¿Quienes somos?</a>
+                            <div class="post-meta">
+                                <a href="#" class="post-date">UTEC</a>
+                                <a href="#" class="post-author">Proyecto Interdisciplinario 1</a>
                             </div>
-                            <!-- Blog Content -->
-                            <div class="blog-content">
-                                <a href="#" class="post-title">¿Cómo funciona?</a>
-                                <div class="post-meta">
-                                    <a href="#" class="post-date">UTEC</a>
-                                    <a href="#" class="post-author">Proyecto Interdisciplinario 1</a>
-                                </div>
-                                <p>
-                                    Su uso es bastante sencillo, solo tienes que vincular tu cuenta a un
-                                    chip donde podrás manejar tus balances de viajes y podrás conectarlo
-                                    en conjunto a tu método de pago preferido.
-                                </p>
-                            </div>
+                            <p> Somos un start-up que busca mejorar la experiencia del usuario, con la idea de eliminar la interacción con el cobrador con el fin de evitar conflictos y brindar una mayor comodidad.
+                              ¡Baja para saber más acerca de este proyecto!
+                            </p>
                         </div>
+                    </div>
 
-                        <!-- Vincula tu cuenta -->
-                        <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
-                            <!-- Blog Thumbnail -->
-                            <div class="blog-thumbnail">
-                                <img src="/static/imgs/phone" alt="">
-                            </div>
-                            <!-- Blog Content -->
-                            <div class="blog-content">
-                                <a href="#" class="post-title">Sólo vincula tu cuenta</a>
-                                <div class="post-meta">
-                                    <a href="#" class="post-date">UTEC</a>
-                                    <a href="#" class="post-author">Proyecto Interdisciplinario 1</a>
-                                </div>
-                                <p>
-                                    Víncula tu cuenta con un chip cualquiera, ahí podrás ver el costo de tu viaje. Además de
-                                    poder observar el lugar de inicio y destino del viaje realizado.
-                                </p>
-                            </div>
+                    <!-- Cómo funciona -->
+                    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                        <!-- Blog Thumbnail -->
+                        <div class="blog-thumbnail">
+                            <img src="/static/imgs/use" alt="">
                         </div>
-
-                        <!-- Sidebar Area -->
-                        <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
-                            <div class="sidebar-area">
-                                <!-- Single Widget Area -->
-                                <div class="single-widget-area add-widget mb-30">
-                                    <img src="imgs/arriba.png" alt="">
-                                </div>
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+                            <a href="#" class="post-title">¿Cómo funciona?</a>
+                            <div class="post-meta">
+                                <a href="#" class="post-date">UTEC</a>
+                                <a href="#" class="post-author">Proyecto Interdisciplinario 1</a>
                             </div>
+                            <p> Su uso es bastante sencillo, solo tienes que vincular tu cuenta a un
+                              chip donde podrás manejar tus balances de viajes y podrás conectarlo
+                              en conjunto a tu método de pago preferido.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Vincula tu cuenta -->
+                    <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                        <!-- Blog Thumbnail -->
+                        <div class="blog-thumbnail">
+                            <img src="/static/imgs/phone" alt="">
+                        </div>
+                        <!-- Blog Content -->
+                        <div class="blog-content">
+                            <a href="#" class="post-title">Sólo vincula tu cuenta</a>
+                            <div class="post-meta">
+                                <a href="#" class="post-date">UTEC</a>
+                                <a href="#" class="post-author">Proyecto Interdisciplinario 1</a>
+                            </div>
+                            <p> Víncula tu cuenta con un chip cualquiera, ahí podrás ver el costo de tu viaje. Además de
+                              poder observar el lugar de inicio y destino del viaje realizado.
+                            </p>
+                        </div>
+                    </div>
+
+                <!-- Sidebar Area -->
+                <div class="col-12 col-sm-9 col-md-6 col-lg-4 col-xl-3">
+                    <div class="sidebar-area">
+                        <!-- Single Widget Area -->
+                        <div class="single-widget-area add-widget mb-30">
+                            <img src="imgs/arriba.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-        {% endblock %}
+    </div>
+    <!-- ##### Catagory Post Area End ##### -->
+
+    <!-- ##### All Javascript Script ##### -->
+    <!-- jQuery-2.2.4 js -->
+    <script src="js/jquery/jquery-2.2.4.min.js"></script>
+    <!-- Popper js -->
+    <script src="js/bootstrap/popper.min.js"></script>
+    <!-- Bootstrap js -->
+    <script src="js/bootstrap/bootstrap.min.js"></script>
+    <!-- All Plugins js -->
+    <script src="js/plugins/plugins.js"></script>
+    <!-- Active js -->
+    <script src="js/active.js"></script>
+</body>
+
+</html>
