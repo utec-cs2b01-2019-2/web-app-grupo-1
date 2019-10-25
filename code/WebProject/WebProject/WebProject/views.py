@@ -62,7 +62,7 @@ def about():
 def login():                     
     """Renders login """
     return render_template(
-        'login.html',
+        'login_final.html',
         title='Login',
         year=datetime.now().year,
         message='Login to your existing account'
