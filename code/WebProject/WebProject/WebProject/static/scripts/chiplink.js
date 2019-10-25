@@ -1,8 +1,8 @@
 function linkchip()
 {
     console.log("Comprobando. . .");
-    var numero = $('#InputNumero').val();
-    var credentials = JSON.stringify({ "numero": numero });
+    var code = $('#InputNumero').val();
+    var credentials = JSON.stringify({ "code": code });
     console.log(credentials);
     $.ajax({
         url: '/addchips',
