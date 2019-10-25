@@ -1,7 +1,7 @@
 $(function(){
     var url = 'http://' + document.domain + ':' + location.port + '/crud/users';
 
-
+    
     $("#grid").dxDataGrid({
         dataSource: DevExpress.data.AspNet.createStore({
             key: "id",

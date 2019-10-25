@@ -162,6 +162,15 @@ def create_chip():
 
     return 'Linked Chip'
 
+@app.route('/addchips', methods = ['POST'])
+def add_chip():
+    db_session = db.getSession(engine)
+    c= json.loads(request.data)
+    chip = entities.Chips(code_from_user=session['logged_user'], code=c['code'])
+    db_session.add(chip)
+    db_session.commit()
+    return 'Linked Chip'    
+
 @app.route('/chips/<id>',methods = ['GET'])
 def get_chip(id):
     db_session = db.getSession(engine)

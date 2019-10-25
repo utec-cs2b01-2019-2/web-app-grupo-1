@@ -20,10 +20,9 @@ function Login() {
                 $(location).attr('href', url);
 
             },
-
         });
     } else {
-        alert("Escribe la contraseña");
+        alert("Escribe la contraseï¿½a");
     }
 
 }
