@@ -173,7 +173,7 @@ def add_chip():
     db_session.commit()
     return 'Linked Chip'    
 
-@app.route('/chips/<id>',methods = ['GET'])
+@app.route('/chips/<id>', methods = ['GET'])
 def get_chip(id):
     db_session = db.getSession(engine)
     chips = db_session(entities.Chips).filter(entities.Chips.id == id)
