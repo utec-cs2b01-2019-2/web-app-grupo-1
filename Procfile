@@ -1,1 +1,1 @@
-web: flask db upgrade; flask translate compile; gunicorn --chdir code WebProject WebProject runserver:app
+web: flask db upgrade; flask translate compile; gunicorn --chdir code WebProject WebProject WebProject views:app
