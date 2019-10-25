@@ -143,3 +143,9 @@ def current_user():
     db_session = db.getSession(engine)
     user = db_session.query(entities.User).filter(entities.User.id == session['logged_user']).first()
     return Response(json.dumps(user,cls=connector.AlchemyEncoder),mimetype='application/json')
+
+
+@app.route('/logout', methods = ['GET'])
+def logout():
+    session.clear()
+    return render_template('index.html')    

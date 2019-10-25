@@ -8,7 +8,7 @@ function Register() {
         var fullname = $('#fullname').val();
   
 
-    if (password === confirmpassword && password != 0 && confirmpassword !== 0) {
+    if (password === confirmpassword && password != 0) {
 
         var message = JSON.stringify({
             "fullname": fullname,
@@ -53,5 +53,5 @@ function Register() {
             }
         });
     } else
-        alert("Las contraseñas no coinciden");
+        alert("Las contraseï¿½as no coinciden");
 }
