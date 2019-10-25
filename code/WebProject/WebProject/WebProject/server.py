@@ -4,19 +4,21 @@ Routes and views for the flask application.
 
 from flask import Flask, render_template, request, session, Response, redirect
 from datetime import datetime
-
-from WebProject import app
+from os import environ
 
 
 from WebProject.database import connector
 from WebProject.model import entities
 
+
 import json
 import time
 
+
 db = connector.Manager()
 engine = db.createEngine()
-app.secret_key = ".."
+app = Flask(__name__)
+
 
 
 #Pages
@@ -55,6 +57,13 @@ def about():
         title= 'About',
         year=datetime.now().year,
         message='About App'
+        )
+
+@app.route('/linkchip')
+def linkchip():
+    return render_template(
+        'chiplink.html',
+        year=datetime.now().year
         )
 
 
@@ -223,3 +232,10 @@ def delete_chip():
     session.delete(chip)
     session.commit()
     return "Deleted Chip"
+
+
+
+
+if __name__ == '__main__':
+    app.secret_key = ".."
+    app.run(debug=False,port=8080, threaded=True, host=('localhost'))

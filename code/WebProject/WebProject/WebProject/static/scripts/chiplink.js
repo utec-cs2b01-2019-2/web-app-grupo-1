@@ -11,7 +11,7 @@ function linkchip()
         contentType: 'application/json',
         data: credentials,
         success: function (data) {
-            console.log("Linked!");
+            console.log('Linked!');
             var url = 'http://' + document.domain + ':' + location.port + '/home';
             $(location).attr('href', url);
 
