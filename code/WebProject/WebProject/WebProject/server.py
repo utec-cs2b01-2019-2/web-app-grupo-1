@@ -134,10 +134,10 @@ def auth():
             ).one()
     if user and (user.password==password):
 
-        if (remembercheck == 1):
-            session.permanent = True;
-        else:
-            session.permanent = False;
+        #if (remembercheck == 1):
+        #    session.permanent = True;
+        #else:
+        #    session.permanent = False;
 
         session['logged_user'] = user.id
         session['logged_name'] = user.fullname
