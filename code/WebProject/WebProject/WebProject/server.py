@@ -180,7 +180,8 @@ def add_chip():
     chip = entities.Chips(code_from_user=session['logged_user'], code=c['code'])
     db_session.add(chip)
     db_session.commit()
-    return 'Linked Chip'    
+    js = json.dumps(chip, cls=connector.AlchemyEncoder)
+    return Response(js,status=200,mimetype='application/json')   
 
 @app.route('/chips/<id>', methods = ['GET'])
 def get_chip(id):
@@ -232,8 +233,6 @@ def delete_chip():
     session.delete(chip)
     session.commit()
     return "Deleted Chip"
-
-
 
 
 if __name__ == '__main__':
