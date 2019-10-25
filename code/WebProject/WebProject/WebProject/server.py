@@ -92,7 +92,6 @@ def signup():
 
 #Operations
 
-
 @app.route('/users', methods = ['POST'])
 def create_user():
     #c =  json.loads(request.form['values'])
