@@ -123,15 +123,15 @@ def get_user(id):
 
 @app.route('/auth', methods = ['POST'])
 def auth():
+
     message = json.loads(request.data)
     email = message['email']
     password = message['password']
-    remembercheck = message['remembercheck']
+    #remembercheck = message['remembercheck']
 
     db_session = db.getSession(engine)
-    user = db_session.query(entities.User).filter_by(email=email
-            #).filter(entities.User.password==password
-            ).one()
+    user = db_session.query(entities.User).filter_by(email=email).one()
+
     if user and (user.password==password):
 
         #if (remembercheck == 1):

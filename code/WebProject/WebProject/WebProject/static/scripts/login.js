@@ -3,7 +3,7 @@ function Login() {
     console.log("Comprobando. . .");
     var email = $('#InputEmail').val();
     var password = $('#InputPassword').val();
-    var remembercheck = $('#RememberCheck');
+    //var remembercheck = $('#RememberCheck');
 
     if (password != 0) {
         var credentials = JSON.stringify({ "email": email, "password": password}); //"remembercheck": remembercheck});
