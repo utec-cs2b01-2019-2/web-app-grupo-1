@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,7 +17,7 @@
 
   <!-- Custom styles for this template-->
   <link href="/static/content/sb-admin-2.min.css" rel="stylesheet">
-  <script src="/static/js/register.js"></script>
+  <script src="/static/scripts/register.js"></script>
 </head>
 
 <body background="/static/imgs/fondo_login.jpg">
@@ -36,11 +36,9 @@
               </div>
               <form class="user">
                 <div class="form-group row">
-                  <div class="col-sm-6 mb-3 mb-sm-0">
-                    <input type="text" class="form-control form-control-user" id="name" placeholder="Nombres">
-                  </div>
+                  
                   <div class="col-sm-6">
-                    <input type="text" class="form-control form-control-user" id="lastname" placeholder="Apellidos">
+                    <input type="text" class="form-control form-control-user" id="fullname" placeholder="Nombre completo">
                   </div>
                 </div>
                 <div class="form-group">
@@ -51,7 +49,7 @@
                     <input type="password" class="form-control form-control-user" id="password" placeholder="Contraseña">
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-control form-control-user" id="confirmedpassword" placeholder="Confirmar contraseña">
+                    <input type="password" class="form-control form-control-user" id="confirmpassword" placeholder="Confirmar contraseña">
                   </div>
                 </div>
                 <div><input class="btn btn-primary btn-user btn-block" type="button" value="Registrarse" onclick="Register()">

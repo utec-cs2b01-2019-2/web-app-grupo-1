@@ -25,15 +25,16 @@ app.secret_key = ".."
 def home():
     """Renders the home page."""
     if 'logged_name' in session:
-
+        
         return render_template(
             'home.html',
             name=session['logged_name'],
             title='Home Page',
             year=datetime.now().year,
-
+            
         )
     else:
+        
         return render_template(
             'index.html',
             title='Home Page',
@@ -72,7 +73,7 @@ def login():
 def signup():
     """Renders signup"""
     return render_template(
-        'signup.html',
+        'register.html',
         title='Sign Up',
         year=datetime.now().year,
         message='Create a new account'
@@ -148,4 +149,5 @@ def current_user():
 @app.route('/logout', methods = ['GET'])
 def logout():
     session.clear()
-    return render_template('index.html')    
+
+    return render_template('index.html',year=datetime.now().year)    
