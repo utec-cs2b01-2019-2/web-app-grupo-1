@@ -13,7 +13,8 @@
     <title>Pass & Go!</title>
 
     <!-- Favicon -->
-    <link rel="icon" href="/static/imgs/logo_index.png">
+    <link rel="icon" href="/static/imgs/logo_index.jpg">
+    <script src="/static/scripts/logout.js"
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="/static/content/style3.css">
@@ -53,7 +54,7 @@
             <a class="nav-link" href="/"> Account </a>
         </div>
         <div class="nav-item">
-            <a class="nav-link" onclick="logout()">Log Out</a>
+            <a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
         </div>
   </nav>
     <hr>
@@ -62,7 +63,8 @@
 
         <!-- Logo Area -->
         <div class="logo-area">
-            <a href="/home"><img src="/static/imgs/HomeLogo.png" alt=""height="50%" width="50%" ></a>
+            <a href="/home"><img src="/static/imgs/HomeLogo.png" alt=""></a>
+
         </div>
 
     </header>
@@ -80,7 +82,7 @@
                     <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
                         <!-- Blog Thumbnail -->
                         <div class="blog-thumbnail">
-                            <img src="" alt="">
+                            <img src="/static/imgs/register.jpg" alt="">
                         </div>
                         <!-- Blog Content -->
                         <div class="blog-content">
