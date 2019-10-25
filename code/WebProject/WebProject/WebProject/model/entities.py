@@ -12,8 +12,9 @@ class User(connector.Manager.Base):
     
 
 class Chips(connector.Manager.Base):
-    __tablename__ = 'Chips'
-    id = Column(String,Sequence('chip_id'), primary_key=True)
+    __tablename__ = 'chips'
+    id = Column(Integer,Sequence('chip_id_seq'), primary_key=True)
     code = Column(String(12))
-    code_from_user = Column(Integer,ForeignKey('users.id'))
-    code_from   = relationship(User, foreign_keys=[code_from_user])
+    code_from_user = Column(String,ForeignKey('users.id'))
+    code_from = relationship(User, foreign_keys=[code_from_user])
+

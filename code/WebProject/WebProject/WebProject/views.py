@@ -154,14 +154,13 @@ def logout():
 
 @app.route('/chips', methods = ['POST'])
 def create_chip():
-    data = json.loads(request.data)
-    chip = entities.Chips(code_from_user=data['code_from_user'], code=data['code'])
     db_session = db.getSession(engine)
+    c= json.loads(request.data)
+    chip = entities.Chips(code_from_user=c['code_from_user'], code=c['code'])
     db_session.add(chip)
     db_session.commit()
 
-    response = {'chip','created'}
-    return Response(json.dumps(response, cls=connector.AlchemyEncoder),status=200,mimetype='application/json')
+    return 'Linked Chip'
 
 @app.route('/chips/<id>',methods = ['GET'])
 def get_chip(id):
