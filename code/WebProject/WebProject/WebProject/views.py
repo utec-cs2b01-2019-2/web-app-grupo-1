@@ -34,6 +34,7 @@ def home():
 
         )
     else:
+
         return render_template(
             'index.html',
             title='Home Page',
@@ -72,7 +73,7 @@ def login():
 def signup():
     """Renders signup"""
     return render_template(
-        'signup.html',
+        'register.html',
         title='Sign Up',
         year=datetime.now().year,
         message='Create a new account'
