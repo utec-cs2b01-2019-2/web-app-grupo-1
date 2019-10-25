@@ -7,8 +7,8 @@ from datetime import datetime
 from os import environ
 
 
-from WebProject.database import connector
-from WebProject.model import entities
+from database import connector
+from model import entities
 
 
 import json
@@ -238,4 +238,4 @@ def delete_chip():
 
 if __name__ == '__main__':
     app.secret_key = ".."
-    app.run(debug=False,port=8080, threaded=True, host=('localhost'))
+    app.run(debug=False,port=8000, threaded=True, host=('localhost'))
