@@ -6,7 +6,7 @@ function Login() {
     var remembercheck = $('#RememberCheck');
 
     if (password != 0) {
-        var credentials = JSON.stringify({ "email": email, "password": password, "remembercheck": remembercheck});
+        var credentials = JSON.stringify({ "email": email, "password": password}); //"remembercheck": remembercheck});
         console.log(credentials);
         $.ajax({
             url: '/auth',
