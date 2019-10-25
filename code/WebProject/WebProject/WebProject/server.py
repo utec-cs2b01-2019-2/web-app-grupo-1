@@ -237,4 +237,4 @@ def delete_chip():
 
 if __name__ == '__main__':
     app.secret_key = ".."
-    app.run()#debug=False,port=8000, threaded=True, host=('localhost'))
+    app.run(debug=True, port=80, threaded=True, use_reloader= False)
