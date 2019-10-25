@@ -11,7 +11,7 @@ class User(connector.Manager.Base):
     password = Column(String(80))
     
 
-class Chip(connector.Manager.Base):
+class Chips(connector.Manager.Base):
     __tablename__ = 'Chips'
     id = Column(String,Sequence('chip_id'), primary_key=True)
     code = Column(String(12))

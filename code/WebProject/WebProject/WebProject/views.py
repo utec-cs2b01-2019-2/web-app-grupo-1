@@ -112,7 +112,6 @@ def get_user(id):
     return Response(message, status=404, mimetype='application/json')
 
 
-
 @app.route('/authenticate', methods = ['POST'])
 def authenticate():
     message = json.loads(request.data)
@@ -156,16 +155,9 @@ def logout():
 @app.route('/chips', methods = ['POST'])
 def create_chip():
     data = json.loads(request.data)
-    code_from_user = data['code_from_user']
-    code = data['code']
-
-    chip = entities.Chips(
-        code_from_user = code_from_user,
-        code = code
-    )
-
+    chip = entities.Chips(code_from_user=data['code_from_user'], code=data['code'])
     db_session = db.getSession(engine)
-    db_session.add(code)
+    db_session.add(chip)
     db_session.commit()
 
     response = {'chip','created'}
@@ -189,7 +181,7 @@ def get_chips():
     data = dbResponse[:]
     return Response(json.dumps(data, cls=connector.AlchemyEncoder), mimetype='application/json')
 
-@app.route('/messages/<code_from_user>', methods = ['GET'])
+@app.route('/chips/<code_from_user>', methods = ['GET'])
 def get_chip_user(code_from_user):
     db_session = db.getSession(engine)
     chip_from = db_session.query(entities.Message).filter(
