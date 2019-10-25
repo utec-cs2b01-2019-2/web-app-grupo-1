@@ -146,6 +146,7 @@ def current_user():
     return Response(json.dumps(user,cls=connector.AlchemyEncoder),mimetype='application/json')
 
 
+
 @app.route('/logout', methods = ['GET'])
 def logout():
     session.clear()
