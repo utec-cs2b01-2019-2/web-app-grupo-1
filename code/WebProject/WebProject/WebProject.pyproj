@@ -63,6 +63,7 @@
     <Content Include="WebProject\static\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="WebProject\static\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="WebProject\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="WebProject\static\scripts\balance.js" />
     <Content Include="WebProject\static\scripts\bootstrap.js" />
     <Content Include="WebProject\static\scripts\bootstrap.min.js" />
     <Content Include="WebProject\static\scripts\crud_chips.js" />
