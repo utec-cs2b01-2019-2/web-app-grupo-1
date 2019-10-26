@@ -139,7 +139,7 @@ def auth():
         #else:
         #    session.permanent = False;
 
-        session['logged_user'] = user.id
+        #session['logged_user'] = user.id
         #session['logged_name'] = user.fullname
         message = {'message':'Authorized'}
         return Response(json.dumps(message,cls=connector.AlchemyEncoder), status=200,mimetype='application/json')
