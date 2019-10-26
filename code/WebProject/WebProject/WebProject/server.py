@@ -17,7 +17,9 @@ import time
 
 db = connector.Manager()
 engine = db.createEngine()
+
 app = Flask(__name__)
+app.secret_key = "lmao"
 
 
 
@@ -235,5 +237,4 @@ def delete_chip():
 
 
 if __name__ == '__main__':
-    app.secret_key = "lmao"
     app.run()#(debug=True, port=80, threaded=True, use_reloader= False)
