@@ -16,5 +16,6 @@ class Chips(connector.Manager.Base):
     __tablename__ = 'chips'
     id = Column(Integer,Sequence('app_chip_id_seq'), primary_key=True)
     code = Column(String(12))
-    #code_from_user = Column(String,ForeignKey('users.id'))
+    
+    code_from_user = Column(String,ForeignKey('users.id'))
 
