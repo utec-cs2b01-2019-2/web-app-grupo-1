@@ -178,7 +178,7 @@ def create_chip():
 def add_chip():
     db_session = db.getSession(engine)
     c= json.loads(request.data)
-    chip = entities.Chips(code_from_user=session['logged_user'], code=c['code'])
+    chip = entities.Chips(code=c['code'], code_from_user=session['logged_user'])
     db_session.add(chip)
     db_session.commit()
     js = json.dumps(chip, cls=connector.AlchemyEncoder)
