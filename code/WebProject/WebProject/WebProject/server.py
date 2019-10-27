@@ -68,7 +68,13 @@ def linkchip():
         year=datetime.now().year
         )
 
-
+@app.route('/balance')
+def balance():
+    return render_template(
+        'balance.html',
+        year=datetime.now().year,
+        message='Check your current balance'
+        )
 
 
 @app.route('/login')
@@ -93,6 +99,10 @@ def signup():
 
 
 #Operations
+
+
+
+#Users
 
 @app.route('/users', methods = ['POST'])
 def create_user():
@@ -121,7 +131,6 @@ def get_user(id):
 
     message = { 'status': 404, 'message': 'Not Found'}
     return Response(message, status=404, mimetype='application/json')
-
 
 @app.route('/auth', methods = ['POST'])
 def auth():
@@ -161,6 +170,20 @@ def current_user():
 def logout():
     session.clear()
     return render_template('index.html')
+
+#Balance
+
+@app.route('/balance/current', methods = ['GET'])
+def get_balance():
+    db_session = db.getSession(engine)
+    id = session['logged_user']
+    user = db_session.query(entities.User).filter_by(id=id).one()
+    balance = { "balance": user.balance }
+    js = json.dumps(balance, cls=connector.AlchemyEncoder)
+    return  Response(js, status=200, mimetype='application/json')
+
+
+
 
 #API Chips
 
