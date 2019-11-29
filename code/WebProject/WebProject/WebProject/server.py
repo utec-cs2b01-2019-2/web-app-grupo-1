@@ -152,7 +152,7 @@ def auth():
 
         session['logged_user'] = user.id
         session['logged_name'] = user.fullname
-        message = {'message':'Authorized'}
+        message = {'message':'Authorized', 'user_id': user.id ,'username': user.username}
         return Response(json.dumps(message,cls=connector.AlchemyEncoder), status=200,mimetype='application/json')
     else:
         message = {'message':'Unauthorized'}
