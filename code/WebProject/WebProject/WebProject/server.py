@@ -97,10 +97,7 @@ def signup():
         message='Create a new account'
     )
 
-
 #Operations
-
-
 
 #Users
 
@@ -153,7 +150,7 @@ def auth():
         session['logged_user'] = user.id
         session['logged_name'] = user.fullname
         message = {'message':'Authorized'}
-        message = {'message':'Authorized', 'id': user.id, 'email': user.email, 'fullname': user.fullname}
+        message = {'message':'Authorized', 'user_id': user.id, 'email': user.email, 'fullname': user.fullname, 'balance': user.balance}
         return Response(json.dumps(message,cls=connector.AlchemyEncoder), status=200,mimetype='application/json')
     else:
         message = {'message':'Unauthorized'}
@@ -164,8 +161,6 @@ def current_user():
     db_session = db.getSession(engine)
     user = db_session.query(entities.User).filter(entities.User.id == session['logged_user']).first()
     return Response(json.dumps(user,cls=connector.AlchemyEncoder),mimetype='application/json')
-
-
 
 @app.route('/logout', methods = ['GET'])
 def logout():
@@ -183,6 +178,21 @@ def get_balance():
     js = json.dumps(balance, cls=connector.AlchemyEncoder)
     return  Response(js, status=200, mimetype='application/json')
 
+@app.route('/balance/add', methods = ['POST'])
+def add_balance():
+    db_session = db.getSession(engine)
+    c= json.loads(request.data)
+    id = c["id"]
+    user = db_session.query(entities.User).filter(entities.User.id == id).first()
+
+    newbalance = float(user.balance) + float(c["addbalance"])
+    setattr(user, "balance", newbalance)
+
+    db_session.add(user)
+    db_session.commit()
+
+    js = json.dumps(user, cls=connector.AlchemyEncoder)
+    return Response(js,status=200,mimetype='application/json')  
 
 
 
