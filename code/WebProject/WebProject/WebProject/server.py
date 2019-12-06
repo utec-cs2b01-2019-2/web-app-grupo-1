@@ -153,6 +153,7 @@ def auth():
         session['logged_user'] = user.id
         session['logged_name'] = user.fullname
         message = {'message':'Authorized'}
+        message = {'message':'Authorized', 'id': user.id, 'email': user.email, 'fullname': user.fullname}
         return Response(json.dumps(message,cls=connector.AlchemyEncoder), status=200,mimetype='application/json')
     else:
         message = {'message':'Unauthorized'}
@@ -260,4 +261,4 @@ def delete_chip():
 
 
 if __name__ == '__main__':
-    app.run()#(debug=True, port=80, threaded=True, use_reloader= False)
+    app.run(port=8000, threaded=True, use_reloader=False)
